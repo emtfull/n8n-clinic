@@ -14,15 +14,15 @@ services:
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
-        fromEnvironmentVariable: POSTGRES_DATABASE
+        value: $POSTGRES_DATABASE
       - key: DB_POSTGRESDB_HOST
-        fromEnvironmentVariable: POSTGRES_HOST
+        value: $POSTGRES_HOST
       - key: DB_POSTGRESDB_PORT
-        fromEnvironmentVariable: POSTGRES_PORT
+        value: $POSTGRES_PORT
       - key: DB_POSTGRESDB_USER
-        fromEnvironmentVariable: POSTGRES_USER
+        value: $POSTGRES_USER
       - key: DB_POSTGRESDB_PASSWORD
-        fromEnvironmentVariable: POSTGRES_PASSWORD
+        value: $POSTGRES_PASSWORD
       - key: DB_POSTGRESDB_SCHEMA
         value: public
 
@@ -36,7 +36,7 @@ services:
       - key: N8N_ENCRYPTION_KEY
         value: $VAR_N8N_ENCRYPTION_KEY
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
-        value: false
+        value: "false"
 
       # Timezone
       - key: GENERIC_TIMEZONE
@@ -48,19 +48,19 @@ services:
       - key: N8N_LOG_LEVEL
         value: info
       - key: EXECUTIONS_DATA_PRUNE
-        value: true
+        value: "true"
       - key: EXECUTIONS_DATA_MAX_AGE
-        value: 168
+        value: "168"
       - key: EXECUTIONS_DATA_SAVE_ON_ERROR
         value: all
       - key: EXECUTIONS_DATA_SAVE_ON_SUCCESS
         value: none
       - key: EXECUTIONS_DATA_SAVE_ON_PROGRESS
-        value: false
+        value: "false"
       - key: EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS
-        value: false
+        value: "false"
       - key: N8N_METRICS
-        value: true
+        value: "true"
 
     # 🆓 Free plan: no persistent disk enabled
     # disk:
