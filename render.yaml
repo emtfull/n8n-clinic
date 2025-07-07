@@ -3,11 +3,12 @@ services:
     name: n8n
     env: docker
     region: oregon
-    plan: standard
+    plan: starter  # ✅ Free plan: no payment info required
     branch: main
     numInstances: 1
     healthCheckPath: /
     envVars:
+      # Base PostgreSQL connection values
       - key: POSTGRES_DATABASE
         value: postgres
       - key: POSTGRES_HOST
@@ -17,34 +18,43 @@ services:
       - key: POSTGRES_USER
         value: postgres
       - key: POSTGRES_PASSWORD
-        value: your_real_supabase_password
+        value: @n8n_Birdie1989  # 🔐 Replace this in Render UI if needed
 
+      # Inject resolved values for n8n's DB config
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
-        value: $POSTGRES_DATABASE
+        fromEnvironmentVariable: POSTGRES_DATABASE
       - key: DB_POSTGRESDB_HOST
-        value: $POSTGRES_HOST
+        fromEnvironmentVariable: POSTGRES_HOST
       - key: DB_POSTGRESDB_PORT
-        value: $POSTGRES_PORT
+        fromEnvironmentVariable: POSTGRES_PORT
       - key: DB_POSTGRESDB_USER
-        value: $POSTGRES_USER
+        fromEnvironmentVariable: POSTGRES_USER
       - key: DB_POSTGRESDB_PASSWORD
-        value: $POSTGRES_PASSWORD
+        fromEnvironmentVariable: POSTGRES_PASSWORD
       - key: DB_POSTGRESDB_SCHEMA
         value: public
 
+      # App base URLs
       - key: WEBHOOK_URL
-        value: https://n8n-your-app.onrender.com/
+        value: https://n8n-qjql.onrender.com/
       - key: VUE_APP_URL_BASE_API
-        value: https://n8n-your-app.onrender.com/
+        value: https://n8n-qjql.onrender.com/
+
+      # Security
       - key: N8N_ENCRYPTION_KEY
         value: TH7V8aF4lXHk9vM7UnZVRnS8gExN7W2hrq4XdMuqdc8=
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: false
 
+      # Timezone
       - key: GENERIC_TIMEZONE
         value: America/Sao_Paulo
       - key: TZ
         value: America/Sao_Paulo
+
+      # Logging & Execution Settings
       - key: N8N_LOG_LEVEL
         value: info
       - key: EXECUTIONS_DATA_PRUNE
@@ -62,7 +72,7 @@ services:
       - key: N8N_METRICS
         value: true
 
-    # 🆓 Remove disk if you're not using paid persistent storage
+    # 🆓 Free plan: no persistent disk enabled
     # disk:
     #   name: n8n-disk
     #   mountPath: /home/node/.n8n
