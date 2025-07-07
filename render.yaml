@@ -1,0 +1,69 @@
+# render.yaml
+services:
+  - type: web
+    name: n8n
+    env: docker
+    region: oregon
+    plan: standard
+    branch: main
+    numInstances: 1
+    healthCheckPath: /
+    envVars:
+      - key: POSTGRES_DATABASE
+        value: postgres
+      - key: POSTGRES_HOST
+        value: db.uhvqujiizbnoatcmwixr.supabase.co
+      - key: POSTGRES_PORT
+        value: 5432
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        value: your_real_supabase_password
+
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_DATABASE
+        value: $POSTGRES_DATABASE
+      - key: DB_POSTGRESDB_HOST
+        value: $POSTGRES_HOST
+      - key: DB_POSTGRESDB_PORT
+        value: $POSTGRES_PORT
+      - key: DB_POSTGRESDB_USER
+        value: $POSTGRES_USER
+      - key: DB_POSTGRESDB_PASSWORD
+        value: $POSTGRES_PASSWORD
+      - key: DB_POSTGRESDB_SCHEMA
+        value: public
+
+      - key: WEBHOOK_URL
+        value: https://n8n-your-app.onrender.com/
+      - key: VUE_APP_URL_BASE_API
+        value: https://n8n-your-app.onrender.com/
+      - key: N8N_ENCRYPTION_KEY
+        value: TH7V8aF4lXHk9vM7UnZVRnS8gExN7W2hrq4XdMuqdc8=
+
+      - key: GENERIC_TIMEZONE
+        value: America/Sao_Paulo
+      - key: TZ
+        value: America/Sao_Paulo
+      - key: N8N_LOG_LEVEL
+        value: info
+      - key: EXECUTIONS_DATA_PRUNE
+        value: true
+      - key: EXECUTIONS_DATA_MAX_AGE
+        value: 168
+      - key: EXECUTIONS_DATA_SAVE_ON_ERROR
+        value: all
+      - key: EXECUTIONS_DATA_SAVE_ON_SUCCESS
+        value: none
+      - key: EXECUTIONS_DATA_SAVE_ON_PROGRESS
+        value: false
+      - key: EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS
+        value: false
+      - key: N8N_METRICS
+        value: true
+
+    disk:
+      name: n8n-disk
+      mountPath: /home/node/.n8n
+      sizeGB: 5
