@@ -1,4 +1,3 @@
-# render.yaml
 services:
   - type: web
     name: n8n
@@ -63,7 +62,8 @@ services:
       - key: N8N_METRICS
         value: true
 
-    disk:
-      name: n8n-disk
-      mountPath: /home/node/.n8n
-      sizeGB: 5
+    # 🆓 Remove disk if you're not using paid persistent storage
+    # disk:
+    #   name: n8n-disk
+    #   mountPath: /home/node/.n8n
+    #   sizeGB: 5
