@@ -22,8 +22,6 @@ services:
         value: "@n8n_Birdie1989"
       - key: DB_POSTGRESDB_SCHEMA
         value: public
-      - key: N8N_ENCRYPTION_KEY
-        value: YOUR_ENCRYPTION_KEY_HERE
       - key: GENERIC_TIMEZONE
         value: America/Sao_Paulo
       - key: TZ
