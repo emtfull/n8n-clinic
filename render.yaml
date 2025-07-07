@@ -39,13 +39,13 @@ services:
 
       # App base URLs
       - key: WEBHOOK_URL
-        value: $WEBHOOK_URL
+        value: $VAR_WEBHOOK_URL
       - key: VUE_APP_URL_BASE_API
-        value: $VUE_APP_URL_BASE_API
+        value: $VAR_VUE_APP_URL_BASE_API
 
       # Security
       - key: N8N_ENCRYPTION_KEY
-        value: $N8N_ENCRYPTION_KEY
+        value: $VAR_N8N_ENCRYPTION_KEY
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: false
 
