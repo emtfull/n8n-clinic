@@ -10,6 +10,18 @@ services:
     envVars:
       - fromGroup: n8n-secrets
 
+      # Required for n8n DB connection (resolving from env group values)
+      - key: DB_POSTGRESDB_HOST
+        value: ${POSTGRES_HOST}
+      - key: DB_POSTGRESDB_PORT
+        value: ${POSTGRES_PORT}
+      - key: DB_POSTGRESDB_USER
+        value: ${POSTGRES_USER}
+      - key: DB_POSTGRESDB_PASSWORD
+        value: ${POSTGRES_PASSWORD}
+      - key: DB_POSTGRESDB_DATABASE
+        value: ${POSTGRES_DATABASE}
+
       # Static config values only (variables resolved via environment group)
       - key: DB_TYPE
         value: postgresdb
