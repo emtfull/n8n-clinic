@@ -9,16 +9,17 @@ services:
     healthCheckPath: /
     envVars:
       # Base PostgreSQL connection values
-      - key: POSTGRES_DATABASE
-        value: postgres
-      - key: POSTGRES_HOST
+      - key: DB_POSTGRESDB_DATABASE
+        value: $POSTGRES_DATABASE
+      - key: DB_POSTGRESDB_HOST
         value: $POSTGRES_HOST
-      - key: POSTGRES_PORT
+      - key: DB_POSTGRESDB_PORT
         value: $POSTGRES_PORT
-      - key: POSTGRES_USER
-        value: postgres
-      - key: POSTGRES_PASSWORD
+      - key: DB_POSTGRESDB_USER
+        value: $POSTGRES_USER
+      - key: DB_POSTGRESDB_PASSWORD
         value: $POSTGRES_PASSWORD
+
 
       # Inject resolved values for n8n's DB config
       - key: DB_TYPE
