@@ -10,41 +10,17 @@ services:
     envVars:
       - fromGroup: n8n-secrets
 
-      # Inject resolved values for n8n's DB config
+      # Static config values only (variables resolved via environment group)
       - key: DB_TYPE
         value: postgresdb
-      - key: DB_POSTGRESDB_DATABASE
-        value: $POSTGRES_DATABASE
-      - key: DB_POSTGRESDB_HOST
-        value: $POSTGRES_HOST
-      - key: DB_POSTGRESDB_PORT
-        value: $POSTGRES_PORT
-      - key: DB_POSTGRESDB_USER
-        value: $POSTGRES_USER
-      - key: DB_POSTGRESDB_PASSWORD
-        value: $POSTGRES_PASSWORD
       - key: DB_POSTGRESDB_SCHEMA
         value: public
-
-      # App base URLs
-      - key: WEBHOOK_URL
-        value: $VAR_WEBHOOK_URL
-      - key: VUE_APP_URL_BASE_API
-        value: $VAR_VUE_APP_URL_BASE_API
-
-      # Security
-      - key: N8N_ENCRYPTION_KEY
-        value: $VAR_N8N_ENCRYPTION_KEY
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: "false"
-
-      # Timezone
       - key: GENERIC_TIMEZONE
         value: America/Sao_Paulo
       - key: TZ
         value: America/Sao_Paulo
-
-      # Logging & Execution Settings
       - key: N8N_LOG_LEVEL
         value: info
       - key: EXECUTIONS_DATA_PRUNE
@@ -61,9 +37,3 @@ services:
         value: "false"
       - key: N8N_METRICS
         value: "true"
-
-    # 🆓 Free plan: no persistent disk enabled
-    # disk:
-    #   name: n8n-disk
-    #   mountPath: /home/node/.n8n
-    #   sizeGB: 5
