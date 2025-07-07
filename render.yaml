@@ -3,37 +3,26 @@ services:
     name: n8n
     env: docker
     region: oregon
-    plan: starter  # ✅ Free plan: no payment info required
+    plan: starter
     branch: main
     numInstances: 1
     healthCheckPath: /
     envVars:
-      # Base PostgreSQL connection values
-      - key: DB_POSTGRESDB_DATABASE
-        value: $POSTGRES_DATABASE
-      - key: DB_POSTGRESDB_HOST
-        value: $POSTGRES_HOST
-      - key: DB_POSTGRESDB_PORT
-        value: $POSTGRES_PORT
-      - key: DB_POSTGRESDB_USER
-        value: $POSTGRES_USER
-      - key: DB_POSTGRESDB_PASSWORD
-        value: $POSTGRES_PASSWORD
-
+      - fromGroup: n8n-secrets
 
       # Inject resolved values for n8n's DB config
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
-        value: POSTGRES_DATABASE
+        fromEnvironmentVariable: POSTGRES_DATABASE
       - key: DB_POSTGRESDB_HOST
-        value: POSTGRES_HOST
+        fromEnvironmentVariable: POSTGRES_HOST
       - key: DB_POSTGRESDB_PORT
-        value: POSTGRES_PORT
+        fromEnvironmentVariable: POSTGRES_PORT
       - key: DB_POSTGRESDB_USER
-        value: POSTGRES_USER
+        fromEnvironmentVariable: POSTGRES_USER
       - key: DB_POSTGRESDB_PASSWORD
-        value: POSTGRES_PASSWORD
+        fromEnvironmentVariable: POSTGRES_PASSWORD
       - key: DB_POSTGRESDB_SCHEMA
         value: public
 
