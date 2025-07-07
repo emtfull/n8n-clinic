@@ -3,7 +3,7 @@ services:
     name: n8n
     env: docker
     region: oregon
-    plan: starter
+    plan: standard
     branch: main
     numInstances: 1
     healthCheckPath: /
