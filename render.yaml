@@ -11,8 +11,6 @@ services:
       - fromGroup: n8n-secrets
 
       # Variables resolved from environment group
-      - key: DB_POSTGRESDB_HOST
-        value: $POSTGRES_HOST
       - key: DB_POSTGRESDB_PORT
         value: $POSTGRES_PORT
       - key: DB_POSTGRESDB_USER
