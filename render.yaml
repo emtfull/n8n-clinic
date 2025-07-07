@@ -12,15 +12,15 @@ services:
 
       # Required for n8n DB connection (resolving from env group values)
       - key: DB_POSTGRESDB_HOST
-        fromEnvironmentVariable: POSTGRES_HOST
+        value: $POSTGRES_HOST
       - key: DB_POSTGRESDB_PORT
-        fromEnvironmentVariable: POSTGRES_PORT
+        value: $POSTGRES_PORT
       - key: DB_POSTGRESDB_USER
-        fromEnvironmentVariable: POSTGRES_USER
+        value: $POSTGRES_USER
       - key: DB_POSTGRESDB_PASSWORD
-        fromEnvironmentVariable: POSTGRES_PASSWORD
+        value: $POSTGRES_PASSWORD
       - key: DB_POSTGRESDB_DATABASE
-        fromEnvironmentVariable: POSTGRES_DATABASE
+        value: $POSTGRES_DATABASE
 
       # Static config values only (variables resolved via environment group)
       - key: DB_TYPE
