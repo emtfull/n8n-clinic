@@ -54,7 +54,11 @@ services:
         value: false
       - key: EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS
         value: false
-disk:
-  name: n8n
-  mountPath: /home/node/.n8n
-  sizeGB: 5
+    disk:
+      name: n8n-disk
+      mountPath: /home/node/.n8n
+      sizeGB: 5
+
+databases:
+  - name: n8n-db
+    plan: basic-1gb
