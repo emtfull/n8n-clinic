@@ -12,13 +12,13 @@ services:
       - key: POSTGRES_DATABASE
         value: postgres
       - key: POSTGRES_HOST
-        value: db.uhvqujiizbnoatcmwixr.supabase.co
+        value: $POSTGRES_HOST
       - key: POSTGRES_PORT
-        value: 5432
+        value: $POSTGRES_PORT
       - key: POSTGRES_USER
         value: postgres
       - key: POSTGRES_PASSWORD
-        value: @n8n_Birdie1989  # 🔐 Replace this in Render UI if needed
+        value: $POSTGRES_PASSWORD
 
       # Inject resolved values for n8n's DB config
       - key: DB_TYPE
@@ -38,13 +38,13 @@ services:
 
       # App base URLs
       - key: WEBHOOK_URL
-        value: https://n8n-qjql.onrender.com/
+        value: $WEBHOOK_URL
       - key: VUE_APP_URL_BASE_API
-        value: https://n8n-qjql.onrender.com/
+        value: $VUE_APP_URL_BASE_API
 
       # Security
       - key: N8N_ENCRYPTION_KEY
-        value: TH7V8aF4lXHk9vM7UnZVRnS8gExN7W2hrq4XdMuqdc8=
+        value: $N8N_ENCRYPTION_KEY
       - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
         value: false
 
